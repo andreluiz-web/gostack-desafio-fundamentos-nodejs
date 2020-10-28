@@ -25,10 +25,20 @@ class TransactionsRepository {
     return this.transactions;
   }
 
-  // public getBalance(): Balance {}
+  public getBalance(): Balance {
+    const balance = this.transactions.reduce((total, next) => {}, {
+      income: 0,
+      outcome: 0,
+      total: 0,
+    });
+  }
 
   public create({ title, value, type }: CreateTransaction): Transaction {
-    const transaction = new Transaction({ title, value, type });
+    const transaction = new Transaction({
+      title,
+      value,
+      type,
+    });
 
     this.transactions.push(transaction);
 

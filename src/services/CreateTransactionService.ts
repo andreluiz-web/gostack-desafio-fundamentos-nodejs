@@ -5,7 +5,7 @@ import Transaction from '../models/Transaction';
 interface RequestDTO {
   title: string;
   value: number;
-  type: string;
+  type: 'income' | 'outcome';
 }
 
 class CreateTransactionService {
@@ -19,7 +19,7 @@ class CreateTransactionService {
     const transaction = this.transactionsRepository.create({
       title,
       value,
-      type: 'income',
+      type,
     });
 
     return transaction;
